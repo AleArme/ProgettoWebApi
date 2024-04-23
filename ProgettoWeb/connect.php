@@ -44,16 +44,89 @@ function get_movies(){
 
 function get_actors(){
 
-     
+    global $servername, $username, $password, $database, $port;
+
+    // 1. Fetch results into an associative array
+    $actor = array();
+
+    // 2. Create connection
+    // $conn = new mysqli($servername, $username, $password, $database, $port);
+    $conn = mysqli_connect($servername, $username, $password, $database, $port);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // 3. Execute the query
+    $query = "select * from actor;";
+    $result = $conn->query($query);
+
+    // 4. Add an item to the $movies array
+    while($row = $result->fetch_assoc()){
+        $actor[] = $row; // Add an item to the array
+    }
+   
+    return $actor;
 
 }
 
 function get_directors(){
 
+    global $servername, $username, $password, $database, $port;
+
+    // 1. Fetch results into an associative array
+    $director = array();
+
+    // 2. Create connection
+    // $conn = new mysqli($servername, $username, $password, $database, $port);
+    $conn = mysqli_connect($servername, $username, $password, $database, $port);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // 3. Execute the query
+    $query = "select * from director;";
+    $result = $conn->query($query);
+
+    // 4. Add an item to the $movies array
+    while($row = $result->fetch_assoc()){
+        $director[] = $row; // Add an item to the array
+    }
+   
+    return $director;
+
 }
 
 function get_genres(){
     
+    global $servername, $username, $password, $database, $port;
+
+    // 1. Fetch results into an associative array
+    $genre = array();
+
+    // 2. Create connection
+    // $conn = new mysqli($servername, $username, $password, $database, $port);
+    $conn = mysqli_connect($servername, $username, $password, $database, $port);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+
+    // 3. Execute the query
+    $query = "select * from genre;";
+    $result = $conn->query($query);
+
+    // 4. Add an item to the $movies array
+    while($row = $result->fetch_assoc()){
+        $genre[] = $row; // Add an item to the array
+    }
+
+    return $genre;
+
 }
 
 ?>
